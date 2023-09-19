@@ -1,14 +1,13 @@
 # Excercise 4
 
-flowchart TD
-User -- Enters URL --> Browser
-Browser -- Sends a GET request --- Server
-Server -- Returns --> files
-Submit -- Form sends browser to --> Server
-subgraph files[App Files]
-HTMl -- loads --> CSS & JavaScript
-JavaScript --> Render[Render the site]
-end
-files -- Rendered site contains a --> Form
-Form --  Contains action --- Submit
-User --> Submit
+sequenceDiagram
+    User->>Browser: Enters site URL
+    loop 
+    Browser->>Server: Sends a HTTP GET Request
+    Server ->> Browser: Returns site files
+    Browser ->> User: Runs JavaScript and shows the user the site's content
+    User ->> Browser: Interacts with the site by submitting a new note
+    Browser ->> Server: Sends a HTTP Post request
+    Server ->> Browser: Redirects the browser to /notes route
+    Browser ->> Server: Sends HTTP GET Request <br/>
+    end
