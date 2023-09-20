@@ -2,7 +2,6 @@
 
 sequenceDiagram
     User->>Browser: Enters site URL
-    loop 
     Browser->>Server: Sends a HTTP GET Request
     Server ->> Browser: Returns site files
     Browser ->> User: Runs JavaScript and shows the user the site's content
